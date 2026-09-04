@@ -1,9 +1,6 @@
-import { useState } from "react";
 import "./ShopTabs.css";
 
-function ShopTabs() {
-  const [activeTab, setActiveTab] = useState("marketplace");
-
+function ShopTabs({ activeTab, onTabChange }) {
   const tabs = [
     { id: "brands", label: "Top Brands" },
     { id: "nearby", label: "Nearby Stores" },
@@ -19,7 +16,7 @@ function ShopTabs() {
           className={`shop-tab ${
             activeTab === tab.id ? "shop-tab-active" : ""
           }`}
-          onClick={() => setActiveTab(tab.id)}
+          onClick={() => onTabChange(tab.id)}
         >
           {tab.label}
         </button>

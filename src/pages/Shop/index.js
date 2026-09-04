@@ -7,6 +7,7 @@ import Marketplace from "../Marketplace";
 
 function Shop() {
   const [searchValue, setSearchValue] = useState("");
+  const [activeTab, setActiveTab] = useState("marketplace");
 
   return (
     <div className="shop-page">
@@ -15,7 +16,7 @@ function Shop() {
 
         <PromoBanner />
 
-        <ShopTabs />
+        <ShopTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
         <SearchBar
           value={searchValue}
@@ -23,7 +24,7 @@ function Shop() {
           placeholder="Search for products"
         />
 
-        <Marketplace />
+        {activeTab === "marketplace" && <Marketplace />}
       </main>
     </div>
   );

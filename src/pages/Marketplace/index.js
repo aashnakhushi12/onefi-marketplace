@@ -5,11 +5,16 @@ import ProductGrid from "../../components/ProductGrid";
 
 function Marketplace() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadProducts = async () => {
-      const data = await getProducts();
-      setProducts(data);
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadProducts();
@@ -28,7 +33,14 @@ function Marketplace() {
         </div>
       </div>
 
-      <ProductGrid products={products} onProductClick={handleProductClick} />
+      {loading ? (
+        <div className="marketplace-loading">
+          <div className="loading-spinner"></div>
+          <p>Loading products...</p>
+        </div>
+      ) : (
+        <ProductGrid products={products} onProductClick={handleProductClick} />
+      )}
     </section>
   );
 }
