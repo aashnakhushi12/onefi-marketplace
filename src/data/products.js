@@ -4,7 +4,7 @@ const products = [
     name: "Apple iPhone 15",
     brand: "Apple",
     image:
-      "https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=600&q=80",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Apple_iPhone_15.jpeg",
     price: 69999,
     originalPrice: 79999,
     rating: 4.6,

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import "./Marketplace.css";
 import { getProducts } from "../../services/productsService";
 import ProductGrid from "../../components/ProductGrid";
+import ProductDetails from "../ProductDetails";
 
 function Marketplace() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -21,8 +23,17 @@ function Marketplace() {
   }, []);
 
   const handleProductClick = (product) => {
-    console.log("Selected product:", product);
+    setSelectedProduct(product);
   };
+
+  if (selectedProduct) {
+    return (
+      <ProductDetails
+        product={selectedProduct}
+        onBack={() => setSelectedProduct(null)}
+      />
+    );
+  }
 
   return (
     <section className="marketplace-section">
