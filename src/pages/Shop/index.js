@@ -9,24 +9,32 @@ import Marketplace from "../Marketplace";
 function Shop() {
   const [searchValue, setSearchValue] = useState("");
   const [activeTab, setActiveTab] = useState("marketplace");
+  const [isProductDetailsOpen, setIsProductDetailsOpen] = useState(false);
 
   return (
     <div className="shop-page">
       <main className="shop-content">
-        <h1 className="shop-title">Shop</h1>
+        {!isProductDetailsOpen && (
+          <>
+            <h1 className="shop-title">Shop</h1>
 
-        <PromoBanner />
+            <PromoBanner />
 
-        <ShopTabs activeTab={activeTab} onTabChange={setActiveTab} />
+            <ShopTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-        <SearchBar
-          value={searchValue}
-          onChange={setSearchValue}
-          placeholder="Search for products"
-        />
+            <SearchBar
+              value={searchValue}
+              onChange={setSearchValue}
+              placeholder="Search for products"
+            />
+          </>
+        )}
 
         {activeTab === "marketplace" && (
-          <Marketplace searchValue={searchValue} />
+          <Marketplace
+            searchValue={searchValue}
+            onProductDetailsChange={setIsProductDetailsOpen}
+          />
         )}
       </main>
 

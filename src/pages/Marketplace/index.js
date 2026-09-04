@@ -4,7 +4,7 @@ import { getProducts } from "../../services/productsService";
 import ProductGrid from "../../components/ProductGrid";
 import ProductDetails from "../ProductDetails";
 
-function Marketplace({ searchValue }) {
+function Marketplace({ searchValue, onProductDetailsChange }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -30,6 +30,12 @@ function Marketplace({ searchValue }) {
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
+    onProductDetailsChange(true);
+  };
+
+  const handleBack = () => {
+    setSelectedProduct(null);
+    onProductDetailsChange(false);
   };
 
   const filteredProducts = products.filter((product) => {
@@ -42,12 +48,7 @@ function Marketplace({ searchValue }) {
   });
 
   if (selectedProduct) {
-    return (
-      <ProductDetails
-        product={selectedProduct}
-        onBack={() => setSelectedProduct(null)}
-      />
-    );
+    return <ProductDetails product={selectedProduct} onBack={handleBack} />;
   }
 
   return (
