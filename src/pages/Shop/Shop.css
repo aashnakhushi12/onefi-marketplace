@@ -9,10 +9,28 @@
   min-height: 100vh;
   margin: 0 auto;
   padding: 24px 16px;
+  box-sizing: border-box;
 }
 
 .shop-title {
+  margin: 0 0 20px;
   font-size: 28px;
   font-weight: 700;
   color: #222222;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .shop-content {
+    max-width: 720px;
+    padding: 32px 24px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .shop-content {
+    max-width: 900px;
+    padding: 40px 32px;
+  }
 }
