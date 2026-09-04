@@ -6,6 +6,7 @@ function ProductDetails({ product, onBack }) {
       <div className="product-details-page">
         <div className="product-details-empty">
           <h2>Product not found</h2>
+
           <button type="button" onClick={onBack}>
             Back to Marketplace
           </button>
@@ -53,7 +54,8 @@ function ProductDetails({ product, onBack }) {
           <div className="detail-row">
             <span>EMI starts from</span>
             <strong>
-              ₹{product.emiPlans[0].monthlyAmount.toLocaleString("en-IN")}/month
+              ₹{product.emiPlans[0].monthlyAmount.toLocaleString("en-IN")}
+              /month
             </strong>
           </div>
         </div>

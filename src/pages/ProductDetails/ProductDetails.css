@@ -134,3 +134,35 @@
   color: #222222;
   text-align: right;
 }
+
+.product-details-info {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.product-details-info h2 {
+  margin: 0 0 16px;
+  color: #222222;
+  font-size: 18px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eeeeee;
+  color: #777777;
+  font-size: 14px;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row strong {
+  color: #222222;
+  text-align: right;
+}
