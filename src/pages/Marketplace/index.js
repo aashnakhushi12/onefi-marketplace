@@ -10,21 +10,21 @@ function Marketplace({ searchValue }) {
   const [error, setError] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const loadProducts = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const data = await getProducts();
+      setProducts(data);
+    } catch (err) {
+      setError("Unable to load products. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        setLoading(true);
-        setError("");
-
-        const data = await getProducts();
-        setProducts(data);
-      } catch (err) {
-        setError("Unable to load products. Please try again.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     loadProducts();
   }, []);
 
@@ -68,7 +68,7 @@ function Marketplace({ searchValue }) {
         <div className="marketplace-error">
           <p>{error}</p>
 
-          <button type="button" onClick={() => window.location.reload()}>
+          <button type="button" onClick={loadProducts}>
             Try Again
           </button>
         </div>
