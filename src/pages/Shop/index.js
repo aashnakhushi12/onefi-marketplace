@@ -1,5 +1,6 @@
 import "./Shop.css";
 import PromoBanner from "../../components/PromoBanner";
+import ShopTabs from "../../components/ShopTabs";
 
 function Shop() {
   return (
@@ -8,6 +9,8 @@ function Shop() {
         <h1 className="shop-title">Shop</h1>
 
         <PromoBanner />
+
+        <ShopTabs />
       </main>
     </div>
   );
