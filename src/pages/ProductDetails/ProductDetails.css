@@ -299,3 +299,48 @@
   color: #666666;
   font-size: 12px;
 }
+
+/* Responsive Product Details */
+
+@media (max-width: 600px) {
+  .product-details-page {
+    padding: 16px;
+  }
+
+  .product-details-image {
+    height: 260px;
+  }
+
+  .product-details-content h1 {
+    font-size: 22px;
+  }
+
+  .product-details-price {
+    font-size: 20px;
+  }
+
+  .variant-section,
+  .emi-section,
+  .product-details-info {
+    padding: 16px;
+  }
+
+  .variant-options {
+    gap: 8px;
+  }
+
+  .variant-button {
+    padding: 9px 14px;
+  }
+
+  .emi-card {
+    padding: 12px;
+  }
+
+  .proceed-button {
+    position: sticky;
+    bottom: 12px;
+    z-index: 10;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  }
+}
