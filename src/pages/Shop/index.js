@@ -1,7 +1,14 @@
+import "./Shop.css";
+import PromoBanner from "../../components/PromoBanner";
+
 function Shop() {
   return (
-    <div>
-      <h1>Shop</h1>
+    <div className="shop-page">
+      <main className="shop-content">
+        <h1 className="shop-title">Shop</h1>
+
+        <PromoBanner />
+      </main>
     </div>
   );
 }
