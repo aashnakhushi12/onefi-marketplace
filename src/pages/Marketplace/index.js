@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
 import "./Marketplace.css";
+import { getProducts } from "../../services/productsService";
+import ProductGrid from "../../components/ProductGrid";
 
 function Marketplace() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      const data = await getProducts();
+      setProducts(data);
+    };
+
+    loadProducts();
+  }, []);
+
+  const handleProductClick = (product) => {
+    console.log("Selected product:", product);
+  };
+
   return (
     <section className="marketplace-section">
       <div className="marketplace-header">
@@ -10,9 +28,7 @@ function Marketplace() {
         </div>
       </div>
 
-      <div className="marketplace-empty">
-        <p>Products will appear here.</p>
-      </div>
+      <ProductGrid products={products} onProductClick={handleProductClick} />
     </section>
   );
 }
