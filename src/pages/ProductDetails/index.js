@@ -1,6 +1,11 @@
+import { useState } from "react";
 import "./ProductDetails.css";
 
 function ProductDetails({ product, onBack }) {
+  const [selectedVariant, setSelectedVariant] = useState(
+    product?.variants?.[0]?.id,
+  );
+
   if (!product) {
     return (
       <div className="product-details-page">
@@ -14,6 +19,10 @@ function ProductDetails({ product, onBack }) {
       </div>
     );
   }
+
+  const currentVariant =
+    product.variants?.find((variant) => variant.id === selectedVariant) ||
+    product.variants?.[0];
 
   return (
     <div className="product-details-page">
@@ -31,12 +40,31 @@ function ProductDetails({ product, onBack }) {
         <h1>{product.name}</h1>
 
         <div className="product-details-price">
-          ₹{product.price.toLocaleString("en-IN")}
+          ₹{currentVariant.price.toLocaleString("en-IN")}
         </div>
 
         <p className="product-details-original-price">
           ₹{product.originalPrice.toLocaleString("en-IN")}
         </p>
+
+        <div className="variant-section">
+          <h2>Select Variant</h2>
+
+          <div className="variant-options">
+            {product.variants.map((variant) => (
+              <button
+                key={variant.id}
+                type="button"
+                className={`variant-button ${
+                  selectedVariant === variant.id ? "variant-button-active" : ""
+                }`}
+                onClick={() => setSelectedVariant(variant.id)}
+              >
+                {variant.name}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="product-details-info">
           <h2>Product Details</h2>

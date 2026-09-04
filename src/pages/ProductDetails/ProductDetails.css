@@ -166,3 +166,39 @@
   color: #222222;
   text-align: right;
 }
+
+.variant-section {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.variant-section h2 {
+  margin: 0 0 14px;
+  color: #222222;
+  font-size: 18px;
+}
+
+.variant-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.variant-button {
+  padding: 10px 16px;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #444444;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.variant-button-active {
+  border-color: #6f42c1;
+  background: #6f42c1;
+  color: #ffffff;
+}
