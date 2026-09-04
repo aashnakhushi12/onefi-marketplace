@@ -8,7 +8,7 @@
   max-width: 480px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 24px 16px 100px;
   box-sizing: border-box;
 }
 
@@ -23,7 +23,7 @@
 @media (min-width: 768px) {
   .shop-content {
     max-width: 720px;
-    padding: 32px 24px;
+    padding: 32px 24px 100px;
   }
 }
 
@@ -31,10 +31,6 @@
 @media (min-width: 1024px) {
   .shop-content {
     max-width: 900px;
-    padding: 40px 32px;
+    padding: 40px 32px 100px;
   }
-}
-
-.shop-content {
-  padding-bottom: 100px;
 }
