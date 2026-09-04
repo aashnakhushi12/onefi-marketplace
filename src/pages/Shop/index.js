@@ -24,7 +24,9 @@ function Shop() {
           placeholder="Search for products"
         />
 
-        {activeTab === "marketplace" && <Marketplace />}
+        {activeTab === "marketplace" && (
+          <Marketplace searchValue={searchValue} />
+        )}
       </main>
     </div>
   );

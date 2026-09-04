@@ -4,7 +4,7 @@ import { getProducts } from "../../services/productsService";
 import ProductGrid from "../../components/ProductGrid";
 import ProductDetails from "../ProductDetails";
 
-function Marketplace() {
+function Marketplace({ searchValue }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -32,6 +32,15 @@ function Marketplace() {
     setSelectedProduct(product);
   };
 
+  const filteredProducts = products.filter((product) => {
+    const search = searchValue.toLowerCase().trim();
+
+    return (
+      product.name.toLowerCase().includes(search) ||
+      product.brand.toLowerCase().includes(search)
+    );
+  });
+
   if (selectedProduct) {
     return (
       <ProductDetails
@@ -58,12 +67,20 @@ function Marketplace() {
       ) : error ? (
         <div className="marketplace-error">
           <p>{error}</p>
+
           <button type="button" onClick={() => window.location.reload()}>
             Try Again
           </button>
         </div>
+      ) : filteredProducts.length === 0 ? (
+        <div className="marketplace-error">
+          <p>No products found.</p>
+        </div>
       ) : (
-        <ProductGrid products={products} onProductClick={handleProductClick} />
+        <ProductGrid
+          products={filteredProducts}
+          onProductClick={handleProductClick}
+        />
       )}
     </section>
   );
