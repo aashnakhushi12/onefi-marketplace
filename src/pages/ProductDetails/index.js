@@ -6,6 +6,8 @@ function ProductDetails({ product, onBack }) {
     product?.variants?.[0]?.id,
   );
 
+  const [selectedEmi, setSelectedEmi] = useState(product?.emiPlans?.[0]?.id);
+
   if (!product) {
     return (
       <div className="product-details-page">
@@ -23,6 +25,14 @@ function ProductDetails({ product, onBack }) {
   const currentVariant =
     product.variants?.find((variant) => variant.id === selectedVariant) ||
     product.variants?.[0];
+
+  const currentEmi =
+    product.emiPlans?.find((plan) => plan.id === selectedEmi) ||
+    product.emiPlans?.[0];
+
+  const monthlyAmount = Math.ceil(currentVariant.price / currentEmi.duration);
+
+  const totalAmount = monthlyAmount * currentEmi.duration;
 
   return (
     <div className="product-details-page">
@@ -47,6 +57,7 @@ function ProductDetails({ product, onBack }) {
           ₹{product.originalPrice.toLocaleString("en-IN")}
         </p>
 
+        {/* Variants */}
         <div className="variant-section">
           <h2>Select Variant</h2>
 
@@ -66,6 +77,46 @@ function ProductDetails({ product, onBack }) {
           </div>
         </div>
 
+        {/* EMI Plans */}
+        <div className="emi-section">
+          <h2>Select EMI Plan</h2>
+
+          <div className="emi-options">
+            {product.emiPlans.map((plan) => {
+              const planMonthlyAmount = Math.ceil(
+                currentVariant.price / plan.duration,
+              );
+
+              return (
+                <button
+                  key={plan.id}
+                  type="button"
+                  className={`emi-card ${
+                    selectedEmi === plan.id ? "emi-card-active" : ""
+                  }`}
+                  onClick={() => setSelectedEmi(plan.id)}
+                >
+                  <div>
+                    <strong>{plan.duration} Months</strong>
+
+                    <p>
+                      ₹{planMonthlyAmount.toLocaleString("en-IN")}
+                      /month
+                    </p>
+                  </div>
+
+                  <span>{selectedEmi === plan.id ? "✓" : ""}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="emi-total">
+            Total payable: ₹{totalAmount.toLocaleString("en-IN")}
+          </p>
+        </div>
+
+        {/* Product Details */}
         <div className="product-details-info">
           <h2>Product Details</h2>
 
@@ -80,11 +131,8 @@ function ProductDetails({ product, onBack }) {
           </div>
 
           <div className="detail-row">
-            <span>EMI starts from</span>
-            <strong>
-              ₹{product.emiPlans[0].monthlyAmount.toLocaleString("en-IN")}
-              /month
-            </strong>
+            <span>Selected EMI</span>
+            <strong>{currentEmi.duration} Months</strong>
           </div>
         </div>
       </div>

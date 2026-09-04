@@ -202,3 +202,64 @@
   background: #6f42c1;
   color: #ffffff;
 }
+
+.emi-section {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.emi-section h2 {
+  margin: 0 0 14px;
+  color: #222222;
+  font-size: 18px;
+}
+
+.emi-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emi-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #222222;
+  text-align: left;
+  cursor: pointer;
+}
+
+.emi-card strong {
+  font-size: 14px;
+}
+
+.emi-card p {
+  margin: 5px 0 0;
+  color: #777777;
+  font-size: 12px;
+}
+
+.emi-card span {
+  color: #6f42c1;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.emi-card-active {
+  border-color: #6f42c1;
+  background: #f8f4ff;
+}
+
+.emi-total {
+  margin: 14px 0 0;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 600;
+}
