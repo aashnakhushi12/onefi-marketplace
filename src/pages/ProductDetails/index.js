@@ -8,6 +8,8 @@ function ProductDetails({ product, onBack }) {
 
   const [selectedEmi, setSelectedEmi] = useState(product?.emiPlans?.[0]?.id);
 
+  const [proceeded, setProceeded] = useState(false);
+
   if (!product) {
     return (
       <div className="product-details-page">
@@ -33,6 +35,10 @@ function ProductDetails({ product, onBack }) {
   const monthlyAmount = Math.ceil(currentVariant.price / currentEmi.duration);
 
   const totalAmount = monthlyAmount * currentEmi.duration;
+
+  const handleProceed = () => {
+    setProceeded(true);
+  };
 
   return (
     <div className="product-details-page">
@@ -69,7 +75,10 @@ function ProductDetails({ product, onBack }) {
                 className={`variant-button ${
                   selectedVariant === variant.id ? "variant-button-active" : ""
                 }`}
-                onClick={() => setSelectedVariant(variant.id)}
+                onClick={() => {
+                  setSelectedVariant(variant.id);
+                  setProceeded(false);
+                }}
               >
                 {variant.name}
               </button>
@@ -94,7 +103,10 @@ function ProductDetails({ product, onBack }) {
                   className={`emi-card ${
                     selectedEmi === plan.id ? "emi-card-active" : ""
                   }`}
-                  onClick={() => setSelectedEmi(plan.id)}
+                  onClick={() => {
+                    setSelectedEmi(plan.id);
+                    setProceeded(false);
+                  }}
                 >
                   <div>
                     <strong>{plan.duration} Months</strong>
@@ -135,6 +147,25 @@ function ProductDetails({ product, onBack }) {
             <strong>{currentEmi.duration} Months</strong>
           </div>
         </div>
+
+        {/* Proceed CTA */}
+        <button
+          type="button"
+          className="proceed-button"
+          onClick={handleProceed}
+        >
+          Proceed with EMI
+        </button>
+
+        {proceeded && (
+          <div className="proceed-message">
+            <strong>Selection confirmed</strong>
+            <p>
+              {product.name} • {currentVariant.name} • {currentEmi.duration}{" "}
+              Months EMI
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
