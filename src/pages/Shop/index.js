@@ -3,6 +3,7 @@ import "./Shop.css";
 import PromoBanner from "../../components/PromoBanner";
 import ShopTabs from "../../components/ShopTabs";
 import SearchBar from "../../components/SearchBar";
+import BottomNavigation from "../../components/BottomNavigation";
 import Marketplace from "../Marketplace";
 
 function Shop() {
@@ -28,6 +29,8 @@ function Shop() {
           <Marketplace searchValue={searchValue} />
         )}
       </main>
+
+      <BottomNavigation />
     </div>
   );
 }
