@@ -7,13 +7,19 @@ import ProductDetails from "../ProductDetails";
 function Marketplace() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
+        setLoading(true);
+        setError("");
+
         const data = await getProducts();
         setProducts(data);
+      } catch (err) {
+        setError("Unable to load products. Please try again.");
       } finally {
         setLoading(false);
       }
@@ -48,6 +54,13 @@ function Marketplace() {
         <div className="marketplace-loading">
           <div className="loading-spinner"></div>
           <p>Loading products...</p>
+        </div>
+      ) : error ? (
+        <div className="marketplace-error">
+          <p>{error}</p>
+          <button type="button" onClick={() => window.location.reload()}>
+            Try Again
+          </button>
         </div>
       ) : (
         <ProductGrid products={products} onProductClick={handleProductClick} />
