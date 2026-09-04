@@ -3,6 +3,7 @@ import "./Shop.css";
 import PromoBanner from "../../components/PromoBanner";
 import ShopTabs from "../../components/ShopTabs";
 import SearchBar from "../../components/SearchBar";
+import Marketplace from "../Marketplace";
 
 function Shop() {
   const [searchValue, setSearchValue] = useState("");
@@ -21,6 +22,8 @@ function Shop() {
           onChange={setSearchValue}
           placeholder="Search for products"
         />
+
+        <Marketplace />
       </main>
     </div>
   );

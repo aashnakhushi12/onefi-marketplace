@@ -1,0 +1,43 @@
+.marketplace-section {
+  margin-top: 24px;
+}
+
+.marketplace-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.marketplace-label {
+  margin: 0 0 4px;
+  color: #777777;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+.marketplace-header h2 {
+  margin: 0;
+  color: #222222;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.marketplace-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  padding: 20px;
+  border: 1px dashed #dddddd;
+  border-radius: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.marketplace-empty p {
+  margin: 0;
+  color: #888888;
+  font-size: 14px;
+}
