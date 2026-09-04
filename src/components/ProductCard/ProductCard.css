@@ -4,9 +4,7 @@
   border: 1px solid #eeeeee;
   border-radius: 18px;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-card:hover {
@@ -23,12 +21,12 @@
 .product-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
+  object-fit: cover;
 }
 
 .product-info {
-  padding: 14px;
+  padding: 16px;
 }
 
 .product-brand {
@@ -37,6 +35,7 @@
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .product-name {
@@ -71,4 +70,14 @@
   color: #6f42c1;
   font-size: 12px;
   font-weight: 600;
+}
+
+@media (max-width: 380px) {
+  .product-image-wrapper {
+    height: 200px;
+  }
+
+  .product-info {
+    padding: 14px;
+  }
 }
